@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+    <script  src="/jquery-3.6.0.js" type="text/javascript"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.css" rel="stylesheet">
+
+</head>
+<body>
+<body background="https://img2.baidu.com/it/u=1406667420,3166776831&amp;fm=26&amp;fmt=auto&amp;gp=0.jpg" style=" background-repeat:no-repeat ;background-size:100% 100%;
+background-attachment: fixed;">
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                    <small>Books</small>
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 column">
+<!--            <form th:action="@{/book/updateBook}" method="post">-->
+<!--           <a class="btn btn-primary" href="${pageContext.request.contextPath}/book/addBookPage">AddNewBook</a>-->
+            <a class="btn btn-primary" th:href="@{/book/addBookPage}">AddNewBook</a>
+        </div>
+        <div class="col-md-4 column"></div>
+        <div class="col-md-4 column">
+            <form th:action="@{/book/queryBook}" method="post" style="float:right;display: flex;justify-content: center" >
+                <input type="text" name="queryBookName" class="form-control" placeholder="Please Input Book's Name!">
+                <input class="btn btn-primary" type="submit" value="Query">
+            </form>
+        </div>
+    </div>
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <table class="table table-hover table-striped">
+                <thead>
+                <th>BookID</th>
+                <th>BookName</th>
+                <th>BookNumber</th>
+                <th>BookDetail</th>
+                <th>Operate</th>
+                </thead>
+                <tbody>
+
+<!--                <c:forEach var="book" items="${list}">-->
+
+
+                    <tr th:each="book:${list}">
+                        <td th:text="${book.bookID}">${book.bookID}</td>
+                        <td th:text="${book.bookName}">${book.bookName}</td>
+                        <td th:text="${book.bookCounts}">${book.bookCounts}</td>
+                        <td th:text="${book.detail}">${book.detail}</td>
+                        <td>
+                            <a th:href="@{/book/UpdatePage(bookID=${book.bookID})}">modification</a>
+<!--                            <a href="${pageContext.request.contextPath}/book/UpdatePage?bookID=${book.bookID}">modification</a>-->
+                            &nbsp; | &nbsp;
+                            <a th:href="@{/book/deleteBook(bookID=${book.bookID})}">delete</a>
+<!--                            <a href="${pageContext.request.contextPath}/book/deleteBook?bookID=${book.bookID}">delete</a>-->
+                        </td>
+                    </tr>
+<!--                </c:forEach>-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

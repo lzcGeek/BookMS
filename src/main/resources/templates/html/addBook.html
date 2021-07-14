@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>AddBook</title>
+    <script  src="/jquery-3.6.0.js" type="text/javascript"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.css" rel="stylesheet">
+    <script>
+        // function f() {
+        //     $.post({
+        //         url:"AddAction",
+        //         success:function (data) {
+        //             alert(data);
+        //         }
+        //     })
+        // }
+    </script>
+</head>
+<body>
+<body background="https://img2.baidu.com/it/u=1406667420,3166776831&amp;fm=26&amp;fmt=auto&amp;gp=0.jpg" style=" background-repeat:no-repeat ;background-size:100% 100%;
+background-attachment: fixed;">
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                    <small>NewBooks</small>
+                </h1>
+            </div>
+        </div>
+    </div>
+
+<!--    <form action="${pageContext.request.contextPath}/book/addBook" method="post">-->
+    <form th:action="@{/book/addBook}" method="post">
+<!--        <form th:action="@{'location.href=\\''${#httpServletRequest.getContextPath()}/book/addBook'}" method="post">-->
+        <div class="form-group">
+            <label >BookName:</label>
+            <input type="text" name="bookName" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label >BookNumber:</label>
+            <input type="text" name="bookCounts" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label >Detail:</label>
+            <input type="text" name="detail" class="form-control" required>
+        </div>
+        <br>
+        <div class="form-group">
+            <input class="btn btn-primary"  type="submit" value="Add" id="add">
+        </div>
+        <label th:text="${addMsg}"></label>
+    </form>
+
+
+</div>
+
+
+</body>
+</html>

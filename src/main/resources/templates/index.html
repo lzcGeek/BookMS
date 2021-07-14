@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <script  src="/jquery-3.6.0.js" type="text/javascript"></script>
+    <title>BookShow</title>
+    <script>
+        function f(msg) {
+            alert(msg)
+        }
+    </script>
+</head>
+<body>
+<body background="https://img2.baidu.com/it/u=1406667420,3166776831&amp;fm=26&amp;fmt=auto&amp;gp=0.jpg" style=" background-repeat:no-repeat ;background-size:100% 100%;
+background-attachment: fixed;">
+<h3>
+    <!--   ${pageContext.request.contentType}/book/allBook-->
+
+    <a th:href="@{/book/allBook}" >Login</a>
+</h3>
+
+<form th:action="@{/book/verify}" method="post">
+    <label>UserName:</label>
+    <input type="text" name="userName" class="form-control" required><br>
+    <label>PassWord:</label>
+    <input type="text" name="passWord" class="form-control" required><br>
+    <input class="btn btn-primary" id="submit" type="submit" value="submit" th:onclick="f(${msg})">
+</form>
+<label style="font-size: 20px; color: crimson;" th:text="${msg}"></label><br>
+<label style="font-size: 50px; color:red;">管理员默认账号密码默认123</label>
+
+
+
+
+
+</body>
+</html>
